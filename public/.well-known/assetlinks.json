@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.appfactory.ghazpdjaktmxj",
+      "sha256_cert_fingerprints": [
+        "BF:8E:CB:C4:F9:90:FB:2B:03:B4:A1:01:C0:E7:72:61:E6:63:AC:0C:75:83:6E:05:39:5F:C2:07:41:33:EB:62"
+      ]
+    }
+  }
+]
