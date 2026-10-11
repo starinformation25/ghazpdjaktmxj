@@ -1,0 +1,239 @@
+{
+  "brand": {
+    "name": "홈케어마스터",
+    "sub": "HOMECARE MASTER",
+    "logo": "img/logo-mark.png"
+  },
+  "tabs": [
+    { "id": "home", "label": "홈", "icon": "home", "to": "home" },
+    { "id": "services", "label": "서비스", "icon": "sWrench", "to": "services" },
+    { "id": "quote", "label": "견적문의", "icon": "clipboard", "to": "quote" },
+    { "id": "support", "label": "고객센터", "icon": "headset", "to": "" },
+    { "id": "my", "label": "마이", "icon": "user", "to": "my" }
+  ],
+  "screens": [
+    {
+      "id": "home",
+      "header": "brand",
+      "tab": "home",
+      "bell": " ",
+      "bellTo": "alerts",
+      "blocks": [
+        {
+          "type": "hero",
+          "title": ["우리 집을 지키는", "전문 홈케어 서비스"],
+          "desc": ["방수부터 청소, 배관까지", "한 번에 해결합니다."],
+          "image": "img/hero-home.jpg",
+          "fade": [0, 0]
+        },
+        {
+          "type": "photoCards",
+          "size": "svc6",
+          "cols": 3,
+          "items": [
+            { "image": "img/tile-roof.jpg", "title": "옥상방수", "to": "quote", "data": { "svc": "옥상방수" } },
+            { "image": "img/tile-wall.jpg", "title": "외벽방수", "to": "quote", "data": { "svc": "외벽방수" } },
+            { "image": "img/tile-screen.jpg", "title": "방충망 시공", "to": "quote", "data": { "svc": "방충망 시공" } },
+            { "image": "img/tile-sofa.jpg", "title": "쇼파청소", "to": "quote", "data": { "svc": "쇼파청소" } },
+            { "image": "img/tile-bed.jpg", "title": "침대·매트리스 청소", "to": "quote", "data": { "svc": "침대·매트리스 청소" } },
+            { "image": "img/tile-pipe.jpg", "title": "배관막힘", "to": "quote", "data": { "svc": "배관막힘" } }
+          ]
+        },
+        {
+          "type": "cta",
+          "label": "빠른 상담/견적 신청",
+          "to": "quote",
+          "icon": "calendarDots",
+          "arrow": true
+        },
+        {
+          "type": "photoCards",
+          "title": "작업사례",
+          "more": "더보기",
+          "moreTo": "cases",
+          "size": "cases3",
+          "cols": 3,
+          "items": [
+            { "image": "img/case-roof.jpg", "title": "방수 시공", "arrow": true, "to": "cases" },
+            { "image": "img/case-wall.jpg", "title": "외벽 방수", "arrow": true, "to": "cases" },
+            { "image": "img/case-sofa.jpg", "title": "쇼파 청소", "arrow": true, "to": "cases" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "header": "back",
+      "title": "전체 서비스",
+      "tab": "services",
+      "blocks": [
+        {
+          "type": "listRows",
+          "variant": "svc",
+          "fav": true,
+          "source": "services"
+        }
+      ]
+    },
+    {
+      "id": "guide",
+      "header": "back",
+      "title": "시공 안내",
+      "tab": "services",
+      "blocks": [{ "type": "svcGuide" }]
+    },
+    {
+      "id": "cases",
+      "header": "back",
+      "title": "작업사례",
+      "tab": "services",
+      "blocks": [
+        {
+          "type": "photoCards",
+          "size": "cases",
+          "cols": 2,
+          "tabs": ["전체", "옥상방수", "외벽방수", "방충망 시공", "쇼파청소", "침대·매트리스 청소", "배관막힘"],
+          "source": "cases",
+          "empty": "해당 서비스의 작업사례가 준비 중입니다."
+        },
+        {
+          "type": "cta",
+          "label": "빠른 상담/견적 신청",
+          "to": "quote",
+          "icon": "calendarDots",
+          "arrow": true
+        }
+      ]
+    },
+    {
+      "id": "quote",
+      "header": "back",
+      "title": "견적문의",
+      "tab": "quote",
+      "blocks": [
+        {
+          "type": "tiles",
+          "variant": "qhead",
+          "cols": 1,
+          "items": [
+            {
+              "image": "img/quote-top.jpg",
+              "title": "지금 바로\n무료 견적을 받아보세요!",
+              "sub": "빠른 상담으로 정확한 견적을 안내해드립니다."
+            }
+          ]
+        },
+        {
+          "type": "form",
+          "layout": "lead",
+          "fields": [
+            { "label": "이름", "kind": "text", "lead": "user", "placeholder": "이름을 입력하세요", "required": true },
+            { "label": "연락처", "kind": "text", "lead": "phone", "format": "tel", "placeholder": "연락처를 입력하세요", "required": true },
+            { "label": "시공주소", "kind": "text", "lead": "pin", "placeholder": "시공주소를 입력하세요", "required": true },
+            { "label": "서비스", "kind": "select", "lead": "docList", "options": "@opt:services", "placeholder": "서비스를 선택하세요", "selKey": "svc", "required": true },
+            { "label": "문의 내용", "kind": "textarea", "lead": "memo", "rows": 3, "placeholder": "문의 내용을 입력하세요" },
+            { "label": "사진 첨부하기", "kind": "photo", "max": 5, "sub": "(최대 5장)" }
+          ],
+          "submit": {
+            "label": "견적 문의하기",
+            "arrow": true,
+            "store": "quotes",
+            "record": {
+              "name": "{이름}",
+              "tel": "{연락처}",
+              "addr": "{시공주소}",
+              "svc": "{서비스}",
+              "memo": "{문의 내용}",
+              "photos": "{사진 첨부하기}",
+              "dateKey": "{$today}"
+            },
+            "doneTitle": "견적 문의가 접수되었습니다",
+            "doneSub": "담당자가 내용을 확인한 뒤 연락드립니다. 접수 내역은 마이 > 상담내역에서 확인하실 수 있습니다.",
+            "doneCta": "상담내역 보기",
+            "to": "history",
+            "panel": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "my",
+      "header": "back",
+      "title": "마이페이지",
+      "tab": "my",
+      "blocks": [
+        {
+          "type": "profile",
+          "name": "회원님",
+          "sub": "홈케어마스터",
+          "gear": true
+        },
+        {
+          "type": "listRows",
+          "variant": "menu",
+          "items": [
+            { "icon": "chat", "title": "상담내역", "to": "history", "panel": 0 },
+            { "icon": "docList", "title": "견적내역", "to": "history", "panel": 1 },
+            { "icon": "sWrench", "title": "작업내역", "to": "history", "panel": 2 },
+            { "icon": "heart", "title": "관심 서비스", "to": "history", "panel": 3 },
+            { "icon": "sMegaphone", "title": "공지사항", "chevron": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "header": "back",
+      "title": "나의 이용내역",
+      "tab": "my",
+      "blocks": [
+        {
+          "type": "panels",
+          "variant": "pill",
+          "tabs": [
+            {
+              "label": "상담내역",
+              "blocks": [
+                { "type": "listRows", "variant": "consult", "expand": true, "source": "consults", "empty": "상담 내역이 없습니다." },
+                { "type": "cta", "label": "새 견적 문의하기", "to": "quote", "icon": "clipboard" }
+              ]
+            },
+            {
+              "label": "견적내역",
+              "blocks": [
+                { "type": "listRows", "variant": "consult", "expand": true, "source": "quotes", "empty": "받은 견적이 없습니다." }
+              ]
+            },
+            {
+              "label": "작업내역",
+              "blocks": [
+                { "type": "listRows", "variant": "consult", "expand": true, "source": "works", "empty": "작업 내역이 없습니다." }
+              ]
+            },
+            {
+              "label": "관심 서비스",
+              "blocks": [
+                { "type": "listRows", "variant": "svc", "source": "favs", "empty": "전체 서비스에서 하트를 눌러 관심 서비스를 담아 보세요." },
+                { "type": "cta", "label": "전체 서비스 보기", "to": "services", "icon": "sWrench", "variant": "ghost" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alerts",
+      "header": "back",
+      "title": "알림",
+      "tab": "home",
+      "blocks": [
+        {
+          "type": "listRows",
+          "variant": "alerts",
+          "source": "notices",
+          "empty": "새 알림이 없습니다."
+        }
+      ]
+    }
+  ]
+}

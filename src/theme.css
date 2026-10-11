@@ -1,0 +1,59 @@
+/* ═══════════════════════════════════════════════════
+   홈케어마스터 — 테마 토큰.
+   시안(10.2 6팀 이승주 어플 시안.png)·로고에서 픽셀로 뽑은 색이다.
+     주 버튼·활성 탭        #015FBA   (시안 빠른 상담/견적 신청 #015FB9 · 견적 문의하기 #015FBD · 활성 탭 #0164BE)
+     마이페이지 프로필 카드  #1A70C8   (시안 #1976CF ~ #1D6CBC)
+     견적문의 안내 카드      #DBEDFD
+     로고 남색(상호)         #01275B   (로고 파일 글자 #012959 · #01245E)
+   ═══════════════════════════════════════════════════ */
+:root {
+  /* ── 브랜드 ── */
+  --brand-900: #01275b; /* 로고 남색 — 상호·제목 */
+  --brand-800: #024a96; /* 진한 파랑 */
+  --brand-700: #0152a3; /* 주 버튼 눌림 */
+  --brand-600: #015fba; /* 주 버튼·활성 탭·아이콘 */
+  --brand-500: #1a70c8; /* 프로필 카드 */
+  --brand-100: #dbedfd; /* 견적 안내 카드 바탕 */
+  --brand-50: #f1f7fe; /* 눌림 배경·새 항목 */
+
+  /* ── 중립 (시안 카드·보조 글자에서 샘플링, --bg 는 규칙 18로 흰색 고정) ── */
+  --bg: #ffffff;
+  --card: #ffffff;
+  --line: #e7eaef;
+  --text: #121620;
+  --text-2: #4f535a;
+  --muted: #7a7d82;
+  --page: #ffffff;
+
+  /* ── 상태 톤 ── */
+  --tone-sky-bg: #e4effc;
+  --tone-sky-fg: #015fba;
+  --tone-violet-bg: #ece9f9;
+  --tone-violet-fg: #6a56c2;
+  --tone-amber-bg: #fdeede;
+  --tone-amber-fg: #c2651f;
+  --tone-rose-bg: #fbe7e5;
+  --tone-rose-fg: #c1514a;
+  --tone-green-bg: #e2f2ea;
+  --tone-green-fg: #20845c;
+  --tone-gray-bg: #eef0f4;
+  --tone-gray-fg: #6d7788;
+  --tone-orange-bg: #fff0e3;
+  --tone-orange-fg: #e7640a;
+
+  /* ── 형태 ── */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 9px;
+  --shell-w: 420px;
+  --tabbar-h: 62px;
+
+  /* 배너 바탕 (blocks.css 가 var() 로 읽는다 — 없으면 배경 이미지째 무시된다).
+     시안 배너는 사진 위 흰 글자뿐이라 덮개는 투명으로 둔다. */
+  --hero-from: rgba(0, 0, 0, 0);
+  --hero-to: rgba(0, 0, 0, 0);
+  --ib-from: #01275b;
+
+  /* 앞 보정층(효령테크)이 가운데 탭에 --accent 를 칠하는 규칙이 남아 있다 — 브랜드색으로 둔다 */
+  --accent: #015fba;
+}

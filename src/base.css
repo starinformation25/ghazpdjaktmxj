@@ -1,0 +1,231 @@
+/* 리셋 + 앱 셸. 앱마다 수정할 일이 없다. */
+:root {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* iOS Safari가 가로 모드에서 글자를 임의로 키우는 것을 막는다. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: var(--text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--page);
+  /* 셸이 뷰포트 높이에 맞으므로 페이지 자체는 스크롤되지 않는다.
+     스크롤은 .scroll 안에서만 일어나고, 탭바는 바닥에 고정된다. */
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ── 앱 셸 ─────────────────────────────────── */
+/* 높이를 min-height로 두면 내용이 길어질 때 셸이 뷰포트보다 커지고,
+   그러면 내부 .scroll 대신 페이지 전체가 스크롤되면서 탭바가 밀려 올라간다.
+   height로 고정해야 .scroll이 남는 공간만 차지하고 탭바가 바닥에 고정된다. */
+.shell {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* dvh 미지원 브라우저 대비 */
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+@media (min-width: 480px) {
+  .shell {
+    /* 데스크톱에서는 폰 프레임으로 보여준다. 창이 짧아도 탭바가 잘리지 않도록 뷰포트에 맞춘다. */
+    max-width: var(--shell-w);
+    height: min(880px, calc(100dvh - 56px));
+    margin: 28px auto;
+    border-radius: 34px;
+    box-shadow: 0 24px 60px rgba(28, 44, 32, 0.22);
+  }
+}
+
+/* ── 헤더 ──────────────────────────────────── */
+.header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 12px;
+  padding-top: max(14px, env(safe-area-inset-top));
+  background: var(--bg);
+}
+
+.brand {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--brand-800);
+}
+
+.bell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--text-2);
+}
+
+.badge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 9px;
+  border: 2px solid var(--bg);
+  background: #d8574d;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 13px;
+  text-align: center;
+}
+
+/* 하위 화면 헤더 (뒤로가기 + 타이틀) */
+.screen-header {
+  flex: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 8px;
+  padding-top: env(safe-area-inset-top);
+  background: var(--bg);
+}
+
+.screen-header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.screen-header .back {
+  position: absolute;
+  left: 8px;
+  bottom: 13px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--text);
+}
+
+/* ── 스크롤 영역 ───────────────────────────── */
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding: 0 20px calc(24px + env(safe-area-inset-bottom));
+  scrollbar-width: none;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── 섹션 공통 ─────────────────────────────── */
+.section {
+  margin-top: 18px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* ── 탭바 ──────────────────────────────────── */
+.tabbar {
+  flex: none;
+  display: grid;
+  height: var(--tabbar-h);
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: var(--tabbar-h);
+  color: #a5aca4;
+  transition: color 0.15s ease;
+}
+
+.tab span {
+  font-size: 10.5px;
+  letter-spacing: -0.03em;
+}
+
+.tab.is-active {
+  color: var(--brand-700);
+  font-weight: 600;
+}
+
+/* ── 상태 톤 ───────────────────────────────── */
+.tone-sky    { background: var(--tone-sky-bg);    color: var(--tone-sky-fg); }
+.tone-violet { background: var(--tone-violet-bg); color: var(--tone-violet-fg); }
+.tone-amber  { background: var(--tone-amber-bg);  color: var(--tone-amber-fg); }
+.tone-rose   { background: var(--tone-rose-bg);   color: var(--tone-rose-fg); }
+.tone-green  { background: var(--tone-green-bg);  color: var(--tone-green-fg); }

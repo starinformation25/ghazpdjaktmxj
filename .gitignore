@@ -1,0 +1,35 @@
+# 의존성 — package-lock.json으로 재현되므로 올리지 않는다 (앱당 60MB)
+node_modules/
+
+# 빌드 산출물
+# dist/를 납품물로 함께 올린다면 아래 줄을 지운다
+dist/
+
+# 작업 부산물
+.omc/
+# 검수용 스크린샷
+review/
+# crop.ps1 출력
+crops/
+# 렌더 검증 임시 산출물
+.ssr-out/
+
+# 환경
+.env
+.env.local
+*.local
+
+# OS / 편집기
+Thumbs.db
+.DS_Store
+.vscode/
+
+# ── 올라가야 하는 것 (무시하지 않는다) ──
+#   src/          앱 본체
+#   public/img/   시안에서 자른 사진. 없으면 화면이 비어 보인다
+#   image.png     시안 원본. 나중에 대조할 근거로 남긴다
+#   PROMPT.md     이 앱을 만든 지시서
+
+# 납품물(APK·문서)은 저장소에 올리지 않는다
+*.apk
+*.docx
